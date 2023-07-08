@@ -1,0 +1,85 @@
+.div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item1, .item2 {
+    flex-basis: 50%;
+    font-size: 1.6rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item1 {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    animation: aparecer 2s ease-in-out;
+}
+
+.item2 {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: aparecer 2s ease-in-out;
+}
+
+.img {
+    /* scale: 1.2; */
+    width: 25rem;
+    border-radius: 10%;
+    padding: 3rem;
+    /* transition: transform 1s ease; */
+    animation: rotateAnimation 2.5s ease-in-out;
+    /* transition: opacity .5s ease; */
+}
+
+.img:hover {
+  /* scale: 1.1; */
+  /* rotate: -320deg; */
+}
+
+@keyframes rotateAnimation {
+    
+    0% {
+      opacity: 0;
+      scale: 0.5;
+    }
+
+    20% {
+        /* scale: 1.3; */
+        rotate: -180deg;
+    }
+    
+    50% {
+        rotate: 0deg;
+        /* scale: 1.2; */
+        /* opacity: 0.5; */
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
+  
+@keyframes aparecer {
+    
+    0% {
+      opacity: 0;
+      scale: 1;
+    }
+
+    /* 50% {
+        opacity: 0.5;
+    } */
+    
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+  }

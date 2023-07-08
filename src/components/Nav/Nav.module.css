@@ -1,0 +1,36 @@
+.div {
+    /* background-color: rgb(68, 6, 68); */
+    /* background-color: #070101a2; */
+    background-color:rgba(83,11,132, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    margin-bottom: 100px;
+}
+
+.button {
+    width: 7rem;
+    padding: 0.5rem;
+    font-size: large;
+    margin-top:1.5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1.5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: black;
+    color: aliceblue;
+}
+
+.div:hover,
+.div:focus {
+    /* background-color:rgba(83,11,132, 0.3); */
+    background-color: #070101a2;
+}
