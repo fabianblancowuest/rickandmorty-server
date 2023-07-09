@@ -23,6 +23,10 @@ function App() {
       // console.log("Estoy en app", id);
    }
 
+   function handleCleanScreen() {
+      setCharacters([])
+   }
+
    //**Función para eliminar personajes
    function onClose(id) {
       id = parseInt(id);
@@ -33,7 +37,7 @@ function App() {
 
    return (
       <div className='App'>
-         <Nav onSearch={onSearch} />
+         <Nav onSearch={onSearch} handleCleanScreen={handleCleanScreen} />
          <Routes>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}></Route>
             <Route path='/about' element={<About></About>}></Route>

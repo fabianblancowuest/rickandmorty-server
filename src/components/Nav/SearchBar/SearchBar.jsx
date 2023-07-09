@@ -6,9 +6,6 @@ export default function SearchBar(props) {
    // **Estado local
    const [id, setId] = useState("");
 
-   // **Estado inicial del input
-   const [inputValue, setInputValue] = useState("");
-
    //** Función para limpiar el input
    // function cleanInputValue() {
    //    setInputValue("");
@@ -31,11 +28,20 @@ export default function SearchBar(props) {
       }
    };
    // Función para limpiar el valor del input con js puro
-   function cleanInput(event) {
+   function cleanInput() {
       props.onSearch(id);
-      setInputValue(event.target.value);
       input.value = "";
-
+   }
+   function random() {
+      return Math.round(Math.random() * (826 - 1) + 1);
+   }
+   function handleRandom() {
+      console.log(random())
+      console.log("Estamos en random");
+      const result = random();
+      setId(result)
+      props.onSearch(id);
+      input.value = "";
    }
 
    return (
@@ -43,6 +49,8 @@ export default function SearchBar(props) {
          <div className={styles.div}>
             <input id="input" className={styles.input} type='search' title="Escriba el id del personaje y presione la tecla ENTER" placeholder="Buscar un personaje..." onChange={handleChange} onKeyDown={handleKeyPress} />
             <input type="submit" value="Agregar" className={styles.button} onClick={cleanInput}></input>
+            <input type="submit" value="Agregar Random" className={styles.button} onClick={handleRandom}></input>
+            <input type="submit" value="Limpiar Pantalla" className={styles.button} onClick={props.handleCleanScreen}></input>
          </div>
       </>
    );

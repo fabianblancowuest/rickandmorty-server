@@ -1,5 +1,5 @@
 .card {
-    font-size: .8rem;
+    font-size: .7rem;
     width: 13rem;
     height: 23.5rem;
     margin: 2em;
@@ -18,7 +18,7 @@
     /* color: aliceblue; */
     /* transform: rotate(1deg); */
     .img {
-        animation: scaleAnimation 1s;
+        animation: scaleAnimation 3s;
         /* scale: 1.1 */
     }
 
@@ -36,7 +36,7 @@
 
 .img:hover {
     /* animation: rotateAnimation 2.5s ease-in-out; */
-    animation: scaleAnimation 1s;
+    /* animation: scaleAnimation 3s; */
     /* transform-origin: center center; */
 }
 
@@ -56,12 +56,23 @@ a:link, a:visited {
 }
 
 @keyframes scaleAnimation {
-    
-    100% {
+    /* 0% {
+        scale: 1.1;
+    } */
+
+    50% {
+       scale: 1.1
+    }
+
+    75% {
         /* opacity: 1;
         scale: 1; */
         /* rotate: -360deg; */
         scale: 1.1;
 
+    }
+
+    100% {
+        scale: 1.0;
     }
   }

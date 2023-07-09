@@ -1,9 +1,9 @@
-/* .div {
+.div {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-} */
+}
 
 .input {
     font-size: large;
@@ -16,9 +16,9 @@
 
 .button {
     margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    width: 7rem;
-    padding: 0.5rem;
+    /* margin-right: 1.5rem; */
+    /* width: 7rem; */
+    padding: 0.5rem 1rem;
     font-size: large;
     border-radius: 0.2rem;
     cursor: pointer;
