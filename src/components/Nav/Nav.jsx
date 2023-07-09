@@ -1,7 +1,7 @@
-import React from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import styles from "./Nav.module.css"
 import { Link } from "react-router-dom";
+// import { useState } from "react";
 
 const Nav = (props) => {
 

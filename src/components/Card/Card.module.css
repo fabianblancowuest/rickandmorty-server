@@ -19,6 +19,7 @@
     /* transform: rotate(1deg); */
     .img {
         animation: scaleAnimation 1s;
+        /* scale: 1.1 */
     }
 
 }
@@ -56,14 +57,6 @@ a:link, a:visited {
 
 @keyframes scaleAnimation {
     
-    0% {
-      /* opacity: 0; */
-      /* scale: 0.5; */
-      rotate: 0deg;
-      /* rotate: 360deg; */
-
-    }
-
     100% {
         /* opacity: 1;
         scale: 1; */

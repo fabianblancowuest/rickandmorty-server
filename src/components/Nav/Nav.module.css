@@ -1,7 +1,7 @@
 .div {
     /* background-color: rgb(68, 6, 68); */
     /* background-color: #070101a2; */
-    background-color:rgba(83,11,132, 0.5);
+    background-color:rgba(83,11,132, .5);
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -10,7 +10,8 @@
     left: 0;
     width: 100%;
     z-index: 999;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
+
 }
 
 .button {
@@ -29,8 +30,7 @@
     color: aliceblue;
 }
 
-.div:hover,
-.div:focus {
+.div:hover {
     /* background-color:rgba(83,11,132, 0.3); */
     background-color: #070101a2;
 }
