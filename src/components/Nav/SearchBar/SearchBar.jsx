@@ -6,11 +6,6 @@ export default function SearchBar(props) {
    // **Estado local
    const [id, setId] = useState("");
 
-   //** Función para limpiar el input
-   // function cleanInputValue() {
-   //    setInputValue("");
-   // }
-
    function handleChange(event) {
       // console.log("funciona el handle", event)
       setId(event.target.value)
@@ -36,22 +31,18 @@ export default function SearchBar(props) {
       return Math.round(Math.random() * (826 - 1) + 1);
    }
    function handleRandom() {
-      console.log(random())
-      console.log("Estamos en random");
-      const result = random();
-      setId(result)
-      props.onSearch(id);
+      props.onSearch(random());
       input.value = "";
    }
 
    return (
-      <>
-         <div className={styles.div}>
-            <input id="input" className={styles.input} type='search' title="Escriba el id del personaje y presione la tecla ENTER" placeholder="Buscar un personaje..." onChange={handleChange} onKeyDown={handleKeyPress} />
-            <input type="submit" value="Agregar" className={styles.button} onClick={cleanInput}></input>
-            <input type="submit" value="Agregar Random" className={styles.button} onClick={handleRandom}></input>
-            <input type="submit" value="Limpiar Pantalla" className={styles.button} onClick={props.handleCleanScreen}></input>
-         </div>
-      </>
+      <div className={styles.div}>
+         <input id="input" className={styles.input} type='search' title="Escriba el id del personaje y presione la tecla ENTER" placeholder="Buscar un personaje..." onChange={handleChange} onKeyDown={handleKeyPress} />
+         <input type="submit" value="Agregar" className={styles.button} onClick={cleanInput}></input>
+         <input type="submit" value="Agregar Random" className={styles.button} onClick={handleRandom} onChange={() => {
+            props.onSearch(id)
+         }}></input>
+         <input type="submit" value="Limpiar Pantalla" className={styles.button} onClick={props.handleCleanScreen}></input>
+      </div>
    );
 }

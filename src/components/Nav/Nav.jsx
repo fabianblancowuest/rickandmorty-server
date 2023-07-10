@@ -4,25 +4,6 @@ import { Link } from "react-router-dom";
 // import { useState, useEffect } from "react";
 
 const Nav = (props) => {
-    // const [scrollActive, setScrollActive] = useState(false);
-
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const scrollPosition = window.scrollY;
-    //         if (scrollPosition > 0) {
-    //             setScrollActive(true);
-    //         } else {
-    //             setScrollActive(false);
-    //         }
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
-
 
     return (
         <div className={styles.div}>
@@ -37,6 +18,7 @@ const Nav = (props) => {
             <div className={styles.nav}>
                 <SearchBar onSearch={props.onSearch} handleCleanScreen={props.handleCleanScreen} />
             </div>
+            <button className={styles.button} onClick={props.logout}>Logout</button>
         </div>
     )
 }

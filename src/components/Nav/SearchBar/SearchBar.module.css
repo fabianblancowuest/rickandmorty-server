@@ -11,14 +11,13 @@
 }
 
 .input, .button {
-    padding: 0.5rem;
+    padding: 0.6vh 1.4vw;
 }
 
 .button {
     margin-left: 1.5rem;
     /* margin-right: 1.5rem; */
     /* width: 7rem; */
-    padding: 0.5rem 1rem;
     font-size: large;
     border-radius: 0.2rem;
     cursor: pointer;
