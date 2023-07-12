@@ -13,16 +13,19 @@ const server = http.createServer((req, res) => {
         const character = data.find((character) => character.id === Number(id));
 
         if (character) {
-            res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify(character));
+            return res
+                .writeHead(200, { "Content-Type": "application/json" })
+                .end(JSON.stringify(character));
         } else {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Personaje no encontrado');
+            return res
+                .writeHead(404, { 'Content-Type': 'text/plain' })
+                .end('Personaje no encontrado');
         }
 
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Ruta inválida');
+        return res
+            .writeHead(404, { 'Content-Type': 'text/plain' })
+            .end('Ruta inválida');
     }
 
 });
