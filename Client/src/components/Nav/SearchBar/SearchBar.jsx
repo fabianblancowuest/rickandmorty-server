@@ -4,7 +4,8 @@ import React, { useState } from "react";
 
 export default function SearchBar(props) {
    // **Estado local
-   const [id, setId] = useState("");
+   const initialState = ""
+   const [id, setId] = useState(initialState);
 
    function handleChange(event) {
       // console.log("funciona el handle", event)
@@ -20,18 +21,20 @@ export default function SearchBar(props) {
          setId(event.target.value)
          props.onSearch(id);
          input.value = "";
+         setId(initialState);
       }
    };
    // Función para limpiar el valor del input con js puro
    function cleanInput() {
       props.onSearch(id);
       input.value = "";
+      setId(initialState);
    }
    function random() {
       return Math.round(Math.random() * (826 - 1) + 1);
    }
    function handleRandom() {
-      props.onSearch(Math.round(Math.random() * (6 - 1) + 1));
+      props.onSearch(Math.round(Math.random() * (5 - 1) + 1));
       input.value = "";
    }
 

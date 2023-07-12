@@ -1,6 +1,6 @@
 const http = require("http");
 const PORT = 3001;
-const data = require("./utils/data.js");
+const data = require("./utils/data");
 
 const server = http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,10 +16,21 @@ const server = http.createServer((req, res) => {
             return res
                 .writeHead(200, { "Content-Type": "application/json" })
                 .end(JSON.stringify(character));
+        } else if (id === "") {
+            return res
+                .writeHead(404, { 'Content-Type': 'text/plain' })
+                // .end(`Personaje ${id} no encontrado `);
+                .end("¡Ingrese un ID!")
+        } else if (typeof id !== "number") {
+            return res
+                .writeHead(404, { 'Content-Type': 'text/plain' })
+                // .end(`Personaje ${id} no encontrado `);
+                .end("¡No existen personajes con ese ID!\n¡Ingrese un ID válido!");
         } else {
             return res
                 .writeHead(404, { 'Content-Type': 'text/plain' })
-                .end('Personaje no encontrado');
+                // .end(`Personaje ${id} no encontrado `);
+                .end("Pesonaje no encontrado");
         }
 
     } else {
@@ -30,8 +41,6 @@ const server = http.createServer((req, res) => {
 
 });
 
-server.listen(PORT, () => {
-    console.log('Servidor escuchando en el puerto', PORT);
-});
+server.listen(PORT)
 
 

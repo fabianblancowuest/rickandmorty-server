@@ -33,7 +33,7 @@ const Detail = () => {
                 <h3>SPECIE | {character.species}</h3>
                 {/* {watchCard ? <h3>ORIGIN | {character.origin.name}</h3> : null} */}
                 <h3>GENDER | {character.gender}</h3>
-                <h3>URL | {character.url}</h3>
+                {/* <h3>URL | {character.url}</h3> */}
                 {/* <h3>ur{character["location"]["name"]}</h3> */}
             </div>
             <div className={styles.item2}>

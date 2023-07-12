@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Card({ onClose, name, status, species, gender, origin, image, id }) {
    return (
       <div className={styles.card}>
-         <button className={styles.btn} onClick={() => { onClose(id) }}>X</button>
+         <button className={styles.btn} onClick={() => { onClose(id) }}>x</button>
          <Link to={`/detail/${id}`}>
             <h2 className={styles.title}>{name}</h2>
             <img className={styles.img} src={image} alt={name} />

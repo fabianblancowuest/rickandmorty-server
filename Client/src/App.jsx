@@ -25,15 +25,14 @@ function App() {
 
    //**Función para agregar personajes
    function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('¡No hay personajes con este ID!');
-         }
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         .then(({ data }) => {
+            if (data.name) {
+               setCharacters((oldChars) => [...oldChars, data]);
+            }
+         })
          //! Captura el error para que no rompa la app!
-      }).catch(() => alert('¡No hay personajes con este ID!'));
-      // console.log("Estoy en app", id);
+         .catch((err) => alert(err.response.data));
    }
 
    // **Función para limpiar las cards de la pantalla
@@ -49,6 +48,7 @@ function App() {
       }))
    }
 
+   // ** Función para desloguearse
    function handleLogout() {
       setAccess(false);
       handleCleanScreen();
