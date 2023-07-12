@@ -1,0 +1,78 @@
+.card {
+    font-size: .7rem;
+    width: 13rem;
+    height: 23.5rem;
+    margin: 2em;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 10px #301950;
+    /* transition: transform 0.5s ease; */
+
+
+}
+
+.card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    /* transform: rotate(-10deg); */
+    background-color: #070101a2;
+    /* color: aliceblue; */
+    /* transform: rotate(1deg); */
+    .img {
+        animation: scaleAnimation 3s;
+        /* scale: 1.1 */
+    }
+
+}
+
+.title {
+    font-size: 1.27rem;
+}
+
+.img {
+    border-radius: 50%;
+    box-shadow: 1px 1px 14px #0b2b8d;
+    width: 75%;
+}
+
+.img:hover {
+    /* animation: rotateAnimation 2.5s ease-in-out; */
+    /* animation: scaleAnimation 3s; */
+    /* transform-origin: center center; */
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+.btn {
+    font-size: large;
+    font-weight: bold;
+}
+.btn:hover {
+    background-color: blueviolet;
+    color: black;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+@keyframes scaleAnimation {
+    /* 0% {
+        scale: 1.1;
+    } */
+
+    50% {
+       scale: 1.1
+    }
+
+    75% {
+        /* opacity: 1;
+        scale: 1; */
+        /* rotate: -360deg; */
+        scale: 1.1;
+
+    }
+
+    100% {
+        scale: 1.0;
+    }
+  }
