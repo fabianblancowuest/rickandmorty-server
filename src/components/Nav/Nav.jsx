@@ -1,6 +1,7 @@
 import SearchBar from "./SearchBar/SearchBar";
 import styles from "./Nav.module.css"
 import { Link } from "react-router-dom";
+import navImg from "../../assets/img/navImg.png"
 // import { useState, useEffect } from "react";
 
 const Nav = (props) => {
@@ -14,6 +15,7 @@ const Nav = (props) => {
                 <Link to="/about">
                     <button className={styles.button}>About</button>
                 </Link>
+                <img src={navImg} className={styles.navImg}></img>
             </div>
             <div className={styles.nav}>
                 <SearchBar onSearch={props.onSearch} handleCleanScreen={props.handleCleanScreen} />
