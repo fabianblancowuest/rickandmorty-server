@@ -25,14 +25,14 @@ function App() {
 
    //**Función para agregar personajes
    function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
             window.alert('¡No hay personajes con este ID!');
          }
          //! Captura el error para que no rompa la app!
-      }).catch(err => alert("error", err))
+      }).catch(() => alert('¡No hay personajes con este ID!'));
       // console.log("Estoy en app", id);
    }
 
