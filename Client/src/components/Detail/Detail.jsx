@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -14,13 +13,15 @@ const Detail = () => {
 
     // Hook para traer datos desde la app de rick y morty
     useEffect(() => {
-        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-            if (data.name) {
-                setCharacter(data);
-            } else {
-                window.alert('No hay personajes con ese ID');
-            }
-        });
+        // axios(`https://rickandmortyapi.com/api/character/${id}`)
+        axios(`http://localhost:3001/rickandmorty/detail/${id}`)
+            .then(({ data }) => {
+                if (data.name) {
+                    setCharacter(data);
+                } else {
+                    window.alert('No hay personajes con ese ID');
+                }
+            });
         return setCharacter({});
     }, [id]);
 
@@ -30,11 +31,13 @@ const Detail = () => {
             <div className={styles.item1}>
                 <h1>{character.name}</h1>
                 <h3>STATUS | {character.status}</h3>
-                <h3>SPECIE | {character.species}</h3>
-                {/* {watchCard ? <h3>ORIGIN | {character.origin.name}</h3> : null} */}
                 <h3>GENDER | {character.gender}</h3>
-                {/* <h3>URL | {character.url}</h3> */}
+                {/* {watchCard ? <h3>ORIGIN | {character.origin.name}</h3> : null} */}
+                <h3>SPECIE | {character.species}</h3>
+                {/* {character.id ? (<h3>ORIGIN | {character.origin.name}</h3>) : null} */}
+                <h3>ORIGIN | {character.origin?.name}</h3>
                 {/* <h3>ur{character["location"]["name"]}</h3> */}
+                <h3>LOCATION | {character.location?.name}</h3>
             </div>
             <div className={styles.item2}>
                 <img className={styles.img} src={character.image} alt={character.name}></img>

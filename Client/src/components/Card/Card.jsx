@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./Card.module.css"
+import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-function Card({ onClose, name, status, species, gender, origin, image, id }) {
+function Card({ onClose, name, status, species, gender, origin, image, id, location }) {
    return (
       <div className={styles.card}>
          <button className={styles.btn} onClick={() => { onClose(id) }}>x</button>

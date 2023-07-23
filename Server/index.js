@@ -1,46 +1,25 @@
 const http = require("http");
-const PORT = 3001;
-const data = require("./utils/data");
+const dotenv = require("dotenv").config();
+const { PORT } = process.env;
+const { getById } = require("./controllers/getChardById");
+// const data = require("./utils/data");
+const LOCALHOST = "http://localhost:5173";
 
 const server = http.createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Origin", "*"); //Cors --> Le damos acceso a todos ("*");
 
-    if (req.url.includes("/rickandmorty/character")) {
-
-        const idStartIndex = req.url.lastIndexOf("/") + 1;
-        const id = req.url.substring(idStartIndex);
-
-        const character = data.find((character) => character.id === Number(id));
-
-        if (character) {
-            return res
-                .writeHead(200, { "Content-Type": "application/json" })
-                .end(JSON.stringify(character));
-        } else if (id === "") {
-            return res
-                .writeHead(404, { 'Content-Type': 'text/plain' })
-                // .end(`Personaje ${id} no encontrado `);
-                .end("¡Ingrese un ID!")
-        } else if (typeof id !== "number") {
-            return res
-                .writeHead(404, { 'Content-Type': 'text/plain' })
-                // .end(`Personaje ${id} no encontrado `);
-                .end("¡No existen personajes con ese ID!\n¡Ingrese un ID válido!");
-        } else {
-            return res
-                .writeHead(404, { 'Content-Type': 'text/plain' })
-                // .end(`Personaje ${id} no encontrado `);
-                .end("Pesonaje no encontrado");
-        }
-
-    } else {
-        return res
-            .writeHead(404, { 'Content-Type': 'text/plain' })
-            .end('Ruta inválida');
+    const id = req.url.split("/").at(-1);
+    if (req.url.includes("onsearch")) {
+        // const id = req.url.lastIndexOf("/") + 1;
+        // const id = req.url.split("/").pop();
+        return getById(res, id);
     }
 
+    if (req.url.includes("detail")) {
+        return getById(res, id);
+    }
 });
 
-server.listen(PORT)
-
-
+server.listen(PORT, () => {
+    console.log("Server listening on port", PORT, "Running on", LOCALHOST);
+});

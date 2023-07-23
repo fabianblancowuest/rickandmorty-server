@@ -3,7 +3,7 @@ import { useState } from "react";
 import img from "../../assets/img/fondo1.jpg"
 import validate from "./validations";
 
-const Form = ({ login }) => {
+const Form = ({ login, datos }) => {
 
     const initialState = {
         email: "",
@@ -28,18 +28,21 @@ const Form = ({ login }) => {
     }
 
     return (
-        <div className={styles.formDiv}>
-            <img src={img} className={styles.img}></img>
-            <form className={styles.form}>
-                <label>EMAIL</label>
-                <input name="email" value={userData.email} type="text" placeholder="Email..." onChange={handleChange}></input>
-                {errors.email ? (<p className={styles.danger}>{errors.email}</p>) : null}
-                <label>PASSWORD</label>
-                <input name="password" value={userData.password} type="password" placeholder="Password..." onChange={handleChange}></input>
-                {errors.password ? (<p className={styles.danger}>{errors.password}</p>) : null}
-                <button onClick={handleSubmit}>Submit</button>
-            </form>
-        </div>
+        <section className={styles.section}>
+            <div className={styles.formDiv}>
+                <img src={img} className={styles.img}></img>
+                <form className={styles.form}>
+                    <label>EMAIL</label>
+                    <input name="email" value={userData.email} type="text" placeholder="Email..." onChange={handleChange}></input>
+                    {errors.email ? (<p className={styles.danger}>{errors.email}</p>) : null}
+                    <label>PASSWORD</label>
+                    <input name="password" value={userData.password} type="password" placeholder="Password..." onChange={handleChange}></input>
+                    {errors.password ? (<p className={styles.danger}>{errors.password}</p>) : null}
+                    {!datos ? (<p className={styles.danger}>Usuario o constraseña incorrecto(s)</p>) : null}
+                    <button onClick={handleSubmit}>Submit</button>
+                </form>
+            </div>
+        </section>
     )
 }
 

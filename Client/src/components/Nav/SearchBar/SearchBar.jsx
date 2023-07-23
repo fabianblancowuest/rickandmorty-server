@@ -34,7 +34,8 @@ export default function SearchBar(props) {
       return Math.round(Math.random() * (826 - 1) + 1);
    }
    function handleRandom() {
-      props.onSearch(Math.round(Math.random() * (5 - 1) + 1));
+      // props.onSearch(Math.round(Math.random() * (5 - 1) + 1));
+      props.onSearch(random());
       input.value = "";
    }
 
