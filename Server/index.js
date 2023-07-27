@@ -1,25 +1,42 @@
-const http = require("http");
-const dotenv = require("dotenv").config();
+// Express
+const express = require("express");
+const server = express();
+const dotenv = require("dotenv");
+dotenv.config();
 const { PORT } = process.env;
-const { getById } = require("./controllers/getChardById");
-// const data = require("./utils/data");
-const LOCALHOST = "http://localhost:5173";
+// Routers
+const userRouter = require("./routes/user");
+const favoriteRouter = require("./routes/favorites");
+const characterRouter = require("./routes/character");
+// Otras dependencias/bibliotecas
+const morgan = require("morgan");
+const cors = require("cors");
 
-const server = http.createServer((req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"); //Cors --> Le damos acceso a todos ("*");
+// Permisos -> Cors
+server.use(cors());
 
-    const id = req.url.split("/").at(-1);
-    if (req.url.includes("onsearch")) {
-        // const id = req.url.lastIndexOf("/") + 1;
-        // const id = req.url.split("/").pop();
-        return getById(res, id);
-    }
+const yellowColor = "\x1b[33m",
+	blueColor = "\x1b[36m",
+	resetColor = "\x1b[0m";
 
-    if (req.url.includes("detail")) {
-        return getById(res, id);
-    }
+// Texto que se imprime al levantar el servidor
+const message = `${yellowColor}Server raised in port ${blueColor}${PORT}${resetColor}`;
+
+// Middlewares
+server.use(express.json()); //Para poder recibir JSON por req.body
+server.use(morgan("dev")); //Muestra en la consola como sale la req y res
+
+// Función para probar que el servidor estee funcionando
+server.get("/health-check", (req, res) => {
+	res.send("Working");
 });
 
+// Routers --> Rutas que voy a usar
+server.use("/character", characterRouter);
+server.use("/user", userRouter);
+server.use("/favorites", favoriteRouter);
+// server.use("/rickandmorty", router);
+
 server.listen(PORT, () => {
-    console.log("Server listening on port", PORT, "Running on", LOCALHOST);
+	console.log(message);
 });
