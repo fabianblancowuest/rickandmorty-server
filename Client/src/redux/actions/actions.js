@@ -1,9 +1,9 @@
 import { ADDFAVORITE, DELETEFAVORITE } from "./types";
 
 // Action creators
-const addFavorite = (id) => ({
+const addFavorite = (objCharacter) => ({
 	type: ADDFAVORITE,
-	payload: id,
+	payload: objCharacter,
 });
 
 const deleteFavorite = (id) => ({

@@ -30,6 +30,9 @@ function App() {
 		});
 	}
 
+	const img =
+		"https://s.yimg.com/ny/api/res/1.2/ERF8gU34MVP46JXFYeTvQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/cinemablend_388/4cea827a41d7c66770e144612647cf50";
+
 	//**Función para agregar personajes
 	function onSearch(id) {
 		// axios(`https://rickandmortyapi.com/api/character/${id}`)
@@ -45,21 +48,33 @@ function App() {
 				// alert("No existen personajes con ese ID\nIngrese un ID válido"),
 				Swal.fire({
 					title: "¡ID no válido!",
-					background: "#333",
+					// background: "#333",
 					color: "red",
 					text: "Debe ingresar un ID entre 1 y 826",
-					imageUrl:
-						"https://s.yimg.com/ny/api/res/1.2/ERF8gU34MVP46JXFYeTvQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/cinemablend_388/4cea827a41d7c66770e144612647cf50",
+					imageUrl: img,
 					imageWidth: 400,
 					imageHeight: 200,
 					imageAlt: "Wrong ID",
 				}),
 			);
 	}
-
 	// **Función para limpiar las cards de la pantalla
 	function handleCleanScreen() {
-		setCharacters([]);
+		Swal.fire({
+			title: "¿Estás seguro?",
+			text: "¡No podrás revertir esto!",
+			icon: "warning",
+			showCancelButton: true,
+			cancelButtonText: "Cancelar",
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "¡Si, limpiala!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setCharacters([]);
+				Swal.fire("¡Listo!", "Se ha limpiado la pantalla.", "success");
+			}
+		});
 	}
 
 	//**Función para eliminar personajes
@@ -74,9 +89,26 @@ function App() {
 
 	// ** Función para desloguearse
 	function handleLogout() {
-		setAccess(false);
-		handleCleanScreen();
-		navigate("/");
+		Swal.fire({
+			title: "¿Estás seguro que quieres salir?",
+			showDenyButton: true,
+			confirmButtonColor: "green",
+			denyButtonText: "No, cancelar.",
+			// showCancelButton: true,
+			confirmButtonText: "Si, salir.",
+			// denyButtonText: `Don't save`,
+		}).then((result) => {
+			/* Read more about isConfirmed, isDenied below */
+			if (result.isConfirmed) {
+				// Swal.fire("Saved!", "", "success");
+				setAccess(false);
+				navigate("/");
+				// handleCleanScreen();
+			}
+			// else if (result.isDenied) {
+			// 	Swal.fire("Changes are not saved", "", "info");
+			// }
+		});
 	}
 
 	return (
