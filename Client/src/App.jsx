@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
+import Swal from "sweetalert2";
 
 function App() {
 	// ** Estado Inicial del arreglo de cards
@@ -41,7 +42,18 @@ function App() {
 			//! Captura el error para que no rompa la app!
 			// .catch((err) => alert(err.response.data));
 			.catch(() =>
-				alert("No existen personajes con ese ID\nIngrese un ID válido"),
+				// alert("No existen personajes con ese ID\nIngrese un ID válido"),
+				Swal.fire({
+					title: "¡ID no válido!",
+					background: "#333",
+					color: "red",
+					text: "Debe ingresar un ID entre 1 y 826",
+					imageUrl:
+						"https://s.yimg.com/ny/api/res/1.2/ERF8gU34MVP46JXFYeTvQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/cinemablend_388/4cea827a41d7c66770e144612647cf50",
+					imageWidth: 400,
+					imageHeight: 200,
+					imageAlt: "Wrong ID",
+				}),
 			);
 	}
 
