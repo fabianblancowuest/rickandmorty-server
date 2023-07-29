@@ -2,17 +2,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background-image: url("../../assets/img/stars-black.png");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover; */
 }
 
 .item1,
 .item2 {
 	flex-basis: 50%;
 	font-size: 1.3vw;
-	/* font-size: 3vh; */
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -22,7 +17,6 @@
 
 .item1 {
 	color: white;
-	/* text-shadow: 0.3rem 0.3rem 1rem white; */
 	display: flex;
 	flex-direction: column;
 	animation: aparecer 2s ease-in-out;
@@ -36,13 +30,9 @@
 }
 
 .img {
-	/* box-shadow: 0.1rem 0.1rem 0.5rem white; */
 	width: 24vw;
 	border-radius: 5%;
-	/* padding: 3rem; */
-	/* transition: transform 1s ease; */
 	animation: rotateAnimation 2.5s ease-in-out;
-	/* transition: opacity .5s ease; */
 }
 
 @keyframes rotateAnimation {

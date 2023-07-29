@@ -1,7 +1,7 @@
 import styles from "./About.module.css";
-import imagen from "../../assets/img/perfil_upscaled.png";
-import linkedin from "../../assets/img/linkedIn-logo.png";
-import github from "../../assets/img/GitHub-logo.png";
+import imagen from "../../assets/img/backgrounds/perfil_upscaled.png";
+import linkedin from "../../assets/img/backgrounds/linkedIn-logo.png";
+import github from "../../assets/img/backgrounds/GitHub-logo.png";
 
 const technologies = ["HTML", "CSS", "JavaScript", "React", "NodeJS", "SQL"];
 const showTechs = technologies.map((item) => <li key={item}>{item}</li>);

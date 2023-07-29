@@ -1,7 +1,7 @@
 import SearchBar from "./SearchBar/SearchBar";
 import styles from "./Nav.module.css";
 import { Link } from "react-router-dom";
-import navImg from "../../assets/img/navImg.png";
+import navImg from "../../assets/img/backgrounds/navImg.png";
 // import { useState, useEffect } from "react";
 
 const Nav = (props) => {

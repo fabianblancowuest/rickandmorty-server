@@ -1,18 +1,12 @@
 .cards {
-    margin-top: 6rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    /* background-image: url("../../../fond2.png"); */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
-    /* background-color: aqua; */
-    color: white;
+	margin-top: 6rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	color: white;
 }
 
 .searchBar {
-    width: 2rem;
+	width: 2rem;
 }
-

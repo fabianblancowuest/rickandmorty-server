@@ -1,7 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Catamaran&family=Montserrat&family=Roboto&family=Ubuntu:wght@300;400;500;700&display=swap"); */
 
 .App {
-	background-image: url("assets/img/background.png");
+	background-image: url("assets/img/backgrounds/background.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
