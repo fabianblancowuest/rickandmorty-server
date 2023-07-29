@@ -1,0 +1,17 @@
+.favorites {
+	background-image: url(../../assets/img/favorites5.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+}
+
+.container {
+	margin-top: 6rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}

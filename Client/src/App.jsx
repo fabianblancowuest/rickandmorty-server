@@ -8,6 +8,7 @@ import Form from "./components/Form/Form";
 import axios from "axios";
 import "./App.css";
 import Swal from "sweetalert2";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
 	// ** Estado Inicial del arreglo de cards
@@ -102,6 +103,7 @@ function App() {
 			if (result.isConfirmed) {
 				// Swal.fire("Saved!", "", "success");
 				setAccess(false);
+				setCharacters([]);
 				navigate("/");
 				// handleCleanScreen();
 			}
@@ -131,6 +133,7 @@ function App() {
 				></Route>
 				<Route path="/about" element={<About></About>}></Route>
 				<Route path="/detail/:id" element={<Detail></Detail>}></Route>
+				<Route path="favorites" element={<Favorites></Favorites>}></Route>
 			</Routes>
 		</div>
 	);

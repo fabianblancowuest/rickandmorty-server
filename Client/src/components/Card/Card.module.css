@@ -31,12 +31,6 @@
 	width: 75%;
 }
 
-.img:hover {
-	/* animation: rotateAnimation 2.5s ease-in-out; */
-	/* animation: scaleAnimation 3s; */
-	/* transform-origin: center center; */
-}
-
 a:link,
 a:visited {
 	color: white;
@@ -55,6 +49,22 @@ a:visited {
 	box-shadow: 0.2rem 0.2rem 3rem #69e0e4;
 	color: white;
 	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.btnFav {
+	background-color: transparent;
+	border-radius: 50%;
+	border: none;
+	/* scale: 1.2; */
+	font-size: 1.3rem;
+	/* text-indent: 9rem; */
+	opacity: 0.5;
+}
+
+.btnFav:hover {
+	opacity: 1;
+	scale: 1.3;
 	cursor: pointer;
 }
 
