@@ -13,10 +13,10 @@
 
 </h2>
 <h3>Capturas de pantalla del proyecto:</h3>
-<img src="./Screenshots/login.png">
+<img src="./Client/src/assets/img/screenshots/login.png">
 <br>
-<img src="./Screenshots/home-cards.png">
+<img src="./Client/src/assets/img/screenshots/home-cards.png">
 <br>
-<img src="./Screenshots/favorites.png">
+<img src="./Client/src/assets/img/screenshots/favorites.png">
 <br>
-<img src="./Screenshots/about.png">
+<img src="./Client/src/assets/img/screenshots/about.png">
