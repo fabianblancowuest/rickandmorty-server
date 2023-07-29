@@ -17,7 +17,7 @@
 <h3>Login</h3>
 <img src="./Client/src/assets/img/screenshots/login.png">
 
-<h3>Home</h43
+<h3>Home</h4>
 <img src="./Client/src/assets/img/screenshots/home-cards.png">
 
 <h3>Favorites</h3>
