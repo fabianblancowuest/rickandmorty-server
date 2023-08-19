@@ -1,4 +1,4 @@
-import { ADDFAVORITE, DELETEFAVORITE } from "./types";
+import { ADDFAVORITE, DELETEFAVORITE, FILTER, ORDER } from "./types";
 
 // Action creators
 const addFavorite = (objCharacter) => ({
@@ -11,4 +11,18 @@ const deleteFavorite = (id) => ({
 	payload: id,
 });
 
-export { addFavorite, deleteFavorite };
+const filterCards = (gender) => {
+	return {
+		type: FILTER,
+		payload: gender,
+	};
+};
+
+const orderCards = (orden) => {
+	return {
+		type: ORDER,
+		payload: orden,
+	};
+};
+
+export { addFavorite, deleteFavorite, filterCards, orderCards };

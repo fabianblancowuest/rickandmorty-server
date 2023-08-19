@@ -1,7 +1,12 @@
-.div {
+.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-image: url(../../assets/img/backgrounds/detail-5.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh;
 }
 
 .item1,
@@ -12,7 +17,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 .item1 {
@@ -30,7 +35,7 @@
 }
 
 .img {
-	width: 24vw;
+	width: 22vw;
 	border-radius: 5%;
 	animation: rotateAnimation 2.5s ease-in-out;
 }
@@ -55,11 +60,11 @@
 @keyframes aparecer {
 	0% {
 		opacity: 0;
-		scale: 1;
+		/* scale: 1; */
 	}
 
 	100% {
 		opacity: 1;
-		scale: 1;
+		/* scale: 1; */
 	}
 }

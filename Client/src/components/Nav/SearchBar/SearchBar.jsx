@@ -1,5 +1,6 @@
 import styles from "./SearchBar.module.css";
 import React, { useState } from "react";
+import audio from "../../../../../audio.mp3";
 
 export default function SearchBar(props) {
 	// **Estado local
@@ -39,12 +40,6 @@ export default function SearchBar(props) {
 	}
 
 	const inputID = document.getElementById("input");
-	// inputID.addEventListener("mouseover", () => {
-	// 	inputID.placeholder = "Ingrese un id: 1-826";
-	// });
-	// inputID.addEventListener("mouseleave", () => {
-	// 	inputID.placeholder = "Busca un personaje...";
-	// });
 
 	function cambiarTxt() {
 		inputID.placeholder = "Ingrese un ID: 1-826";
@@ -87,6 +82,7 @@ export default function SearchBar(props) {
 				className={styles.button}
 				onClick={props.handleCleanScreen}
 			></input>
+			{/* <video src={audio} className={styles.audio} autoPlay></video> */}
 		</div>
 	);
 }

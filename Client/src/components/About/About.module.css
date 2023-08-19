@@ -40,10 +40,14 @@
 .imgContainer {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
 
-.imgLinkedin,
+.imgLinkedin {
+	width: 4vw;
+	background-color: white;
+	border-radius: 0.2rem;
+}
 .imgInstagram {
 	background-color: white;
 	width: 10vw;
@@ -51,7 +55,7 @@
 }
 
 .imgGithub {
-	width: 7vw;
+	width: 4vw;
 	background-color: white;
 }
 
@@ -63,6 +67,9 @@
 	box-shadow: 0.3rem 0.3rem 6rem rgb(84, 142, 163);
 }
 
+.imgLinkedin:hover {
+	color: rgb(2, 115, 179);
+}
 .ul {
 	display: flex;
 	justify-content: space-evenly;

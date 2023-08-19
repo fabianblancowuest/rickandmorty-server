@@ -1,4 +1,4 @@
-.favorites {
+.article {
 	background-image: url(../../assets/img/backgrounds/favorites5.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -6,12 +6,34 @@
 	width: 100vw;
 	height: 100vh;
 	overflow-x: hidden;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	animation: aparecer 4s ease-in-out;
+}
+
+.favorites {
+	margin-top: 6rem;
 }
 
 .container {
-	margin-top: 6rem;
+	/* margin-top: 6rem; */
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	flex-wrap: wrap;
+}
+
+@keyframes aparecer {
+	0% {
+		/* background-image: url(../../assets/img/backgrounds/detail-6.jpg); */
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }

@@ -19,6 +19,7 @@ function Card({
 	favorites,
 }) {
 	const [isFav, setIsFav] = useState(false);
+
 	function handleClick() {
 		if (isFav) {
 			setIsFav(false);

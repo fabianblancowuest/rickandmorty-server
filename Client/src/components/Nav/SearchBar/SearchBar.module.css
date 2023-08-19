@@ -28,3 +28,7 @@
 	background-color: black;
 	color: aliceblue;
 }
+
+.audio {
+	display: none;
+}

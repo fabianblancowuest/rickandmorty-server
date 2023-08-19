@@ -24,7 +24,7 @@ const Detail = () => {
 	}, [id]);
 
 	return (
-		<div className={styles.div}>
+		<div className={styles.container}>
 			<div className={styles.item1}>
 				<h1>{character.name}</h1>
 				<h3>STATUS | {character.status}</h3>
