@@ -1,51 +1,74 @@
 import styles from "./SearchBar.module.css";
-import React, { useState } from "react";
-import audio from "../../../../../audio.mp3";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanScreen, searchById } from "../../../redux/actions/actions";
+import Swal from "sweetalert2";
 
-export default function SearchBar(props) {
+export default function SearchBar() {
 	// **Estado local
+	const characters = useSelector((state) => state.characters);
 	const initialState = "";
 	const [id, setId] = useState(initialState);
 
+	const dispatch = useDispatch();
 	function handleChange(event) {
 		// console.log("funciona el handle", event)
 		setId(event.target.value);
 	}
-	// Captura del valor del input usando javascript puro
-	const input = document.getElementById("input");
 
 	const handleKeyPress = (event) => {
 		if (event.key === "Enter") {
 			// Lógica que se ejecuta al presionar Enter
 			// console.log('Se presionó la tecla Enter');
 			setId(event.target.value);
-			props.onSearch(id);
-			input.value = "";
+			dispatch(searchById(id));
 			setId(initialState);
 		}
 	};
-	// Función para limpiar el valor del input con js puro
-	function cleanInput() {
-		props.onSearch(id);
-		input.value = "";
-		setId(initialState);
-	}
-	function random() {
-		return Math.round(Math.random() * (826 - 1) + 1);
-	}
+
+	const handleClick = () => {
+		const filterCharacter = characters.filter((character) => {
+			return character.id === id, console.log("Hola");
+		});
+		console.log(characters);
+		console.log(id);
+		console.log(filterCharacter);
+		if (filterCharacter.length) {
+			alert("¡Ya existe ese personaje!");
+		} else {
+			dispatch(searchById(id));
+		}
+		// setId(initialState);
+	};
 	function handleRandom() {
-		// props.onSearch(Math.round(Math.random() * (5 - 1) + 1));
-		props.onSearch(random());
-		input.value = "";
+		const random = Math.round(Math.random() * (826 - 1) + 1);
+		dispatch(searchById(random));
+	}
+	function handleCleanScreen() {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to reverse this!",
+			icon: "warning",
+			showCancelButton: true,
+			cancelButtonText: "Cancel",
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, clean it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				dispatch(cleanScreen());
+				Swal.fire("Done!", "The screen has been cleaned..", "success");
+			}
+		});
 	}
 
 	const inputID = document.getElementById("input");
 
 	function cambiarTxt() {
-		inputID.placeholder = "Ingrese un ID: 1-826";
+		inputID.placeholder = "Enter an ID: 1-826";
 	}
 	function txtOriginal() {
-		inputID.placeholder = "Buscar un personaje...";
+		inputID.placeholder = "Search character...";
 	}
 
 	return (
@@ -54,8 +77,8 @@ export default function SearchBar(props) {
 				id="input"
 				className={styles.input}
 				type="search"
-				title="Escriba el id del personaje y presione la tecla ENTER"
-				placeholder="Buscar un personaje..."
+				title="Type the character id and press the ENTER key"
+				placeholder="Search character..."
 				onMouseOver={cambiarTxt}
 				onMouseLeave={txtOriginal}
 				onChange={handleChange}
@@ -63,26 +86,22 @@ export default function SearchBar(props) {
 			/>
 			<input
 				type="submit"
-				value="Agregar"
+				value="ADD CHARACTER"
 				className={styles.button}
-				onClick={cleanInput}
+				onClick={handleClick}
 			></input>
 			<input
 				type="submit"
-				value="Agregar Random"
+				value="RANDOM"
 				className={styles.button}
 				onClick={handleRandom}
-				onChange={() => {
-					props.onSearch(id);
-				}}
 			></input>
 			<input
 				type="submit"
-				value="Limpiar Pantalla"
+				value="CLEAN SCREEN"
 				className={styles.button}
-				onClick={props.handleCleanScreen}
+				onClick={handleCleanScreen}
 			></input>
-			{/* <video src={audio} className={styles.audio} autoPlay></video> */}
 		</div>
 	);
 }

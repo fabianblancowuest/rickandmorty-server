@@ -18,15 +18,17 @@ const Favorites = (props) => {
 		<article className={styles.article}>
 			<section className={styles.favorites}>
 				<div>
-					<select onChange={handleFilter}>
+					<select className={styles.select} onChange={handleFilter}>
+						<option value="">Select an option</option>
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
 						<option value="Genderless">Genderless</option>
 						<option value="unknown">Unknown</option>
 					</select>
-					<select onChange={handleOrder}>
-						<option value="A">Ascedente</option>
-						<option value="D">Descendente</option>
+					<select className={styles.select} onChange={handleOrder}>
+						{/* <option value="">Select an option</option> */}
+						<option value="A">Ascending</option>
+						<option value="D">Descending</option>
 					</select>
 				</div>
 				<div className={styles.container}>

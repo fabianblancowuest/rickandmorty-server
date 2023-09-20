@@ -9,8 +9,9 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 100vh;
-	animation: aparecer 10s ease-in-out;
+	animation: aparecer 3s ease-in-out;
 	overflow-y: hidden;
+	font-family: "Lato", sans-serif;
 }
 
 .container {
@@ -20,9 +21,9 @@
 .info {
 	width: 50%;
 	height: 50vh;
-	font-family: sans-serif;
 	font-size: 1.3vw;
 	font-style: italic;
+	/* letter-spacing: 0.1rem; */
 }
 
 .imgPerfilContainer {
@@ -76,6 +77,7 @@
 	align-items: center;
 	list-style: none;
 	font-size: 1.5vw;
+	/* letter-spacing: 0.1rem; */
 }
 .imgPerfil:hover {
 	box-shadow: 0.3rem 0.3rem 10rem rgb(84, 142, 163);
@@ -86,7 +88,7 @@
 		opacity: 0;
 	}
 
-	25% {
+	50% {
 		opacity: 0.9;
 	}
 

@@ -1,23 +1,27 @@
 .card {
 	font-size: 0.7rem;
-	width: 13rem;
-	height: 23.5rem;
+	letter-spacing: 0.06rem;
+	font-style: italic;
+	width: 14rem;
+	height: 25rem;
 	margin: 2em;
 	border-radius: 1rem;
 	box-shadow: 2px 2px 10px #301950;
-	/* transition: transform 0.5s ease; */
+	background-color: rgba(0, 0, 0, 0.7);
+	transition: transform 0.5s ease;
+	animation: aparecer 3s ease-in-out;
 }
 
 .card:hover {
 	transform: scale(1.1);
 	cursor: pointer;
 	/* transform: rotate(-10deg); */
-	background-color: #070101b9;
+	/* background-color: #070101b9; */
+	/* background-color: rgb(217, 238, 124); */
 	/* color: aliceblue; */
 	/* transform: rotate(1deg); */
 	.img {
 		animation: scaleAnimation 3s;
-		/* scale: 1.1 */
 	}
 }
 
@@ -27,8 +31,9 @@
 
 .img {
 	border-radius: 50%;
-	box-shadow: 1px 1px 14px #0b2b8d;
-	width: 75%;
+	/* box-shadow: 1px 1px 20px #0b2b8d; */
+	box-shadow: 0.1rem 0.1rem 3rem whitesmoke;
+	width: 85%;
 }
 
 a:link,
@@ -83,5 +88,19 @@ a:visited {
 
 	100% {
 		scale: 1;
+	}
+}
+
+@keyframes aparecer {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }

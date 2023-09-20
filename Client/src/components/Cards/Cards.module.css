@@ -1,3 +1,7 @@
+body {
+	font-family: "Lato", sans-serif;
+}
+
 .cards {
 	margin-top: 6rem;
 	display: flex;
