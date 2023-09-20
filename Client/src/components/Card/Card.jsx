@@ -1,45 +1,44 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
-import { addFavorite, deleteFavorite } from "../../redux/actions/actions";
-import { connect } from "react-redux";
-
-function Card({
-	onClose,
-	name,
-	status,
-	species,
-	gender,
-	origin,
-	image,
-	id,
-	location,
-	removeFavorites,
+import { useSelector, useDispatch } from "react-redux";
+import {
 	addFavorite,
-	favorites,
-}) {
+	deleteFavorite,
+	deleteCharacter,
+} from "../../redux/actions/actions";
+
+function Card({ name, status, species, gender, origin, image, id, location }) {
 	const [isFav, setIsFav] = useState(false);
 
-	function handleClick() {
+	const dispatch = useDispatch();
+	const favorites = useSelector((state) => state.favorites);
+
+	function handleFavorite() {
 		if (isFav) {
 			setIsFav(false);
-			removeFavorites(id);
+			dispatch(deleteFavorite(id));
 		} else {
 			setIsFav(true);
-			addFavorite({
-				onClose,
-				name,
-				status,
-				species,
-				gender,
-				origin,
-				image,
-				id,
-				location,
-			});
+			dispatch(
+				addFavorite({
+					name,
+					status,
+					species,
+					gender,
+					origin,
+					image,
+					id,
+					location,
+				}),
+			);
 		}
 		// despachar el objeto de la acción
 	}
+
+	const handleDelete = () => {
+		dispatch(deleteCharacter(id));
+	};
 
 	useEffect(() => {
 		favorites.forEach((fav) => {
@@ -50,16 +49,9 @@ function Card({
 	}, [favorites]);
 	return (
 		<div className={styles.card}>
-			{onClose ? (
-				<button
-					className={styles.btn}
-					onClick={() => {
-						onClose(id);
-					}}
-				>
-					x
-				</button>
-			) : null}
+			<button className={styles.btn} onClick={handleDelete}>
+				x
+			</button>
 			<Link to={`/detail/${id}`}>
 				<h2 className={styles.title}>{name}</h2>
 				<img className={styles.img} src={image} alt={name} />
@@ -67,11 +59,11 @@ function Card({
 				<h2>{gender}</h2>
 			</Link>
 			{isFav ? (
-				<button className={styles.btnFav} onClick={handleClick}>
+				<button className={styles.btnFav} onClick={handleFavorite}>
 					🧡
 				</button>
 			) : (
-				<button className={styles.btnFav} onClick={handleClick}>
+				<button className={styles.btnFav} onClick={handleFavorite}>
 					🤍
 				</button>
 			)}
@@ -79,22 +71,4 @@ function Card({
 	);
 }
 
-export function mapDispatchToProp(dispatch) {
-	return {
-		addFavorite: function (character) {
-			dispatch(addFavorite(character));
-		},
-		removeFavorites: function (id) {
-			dispatch(deleteFavorite(id));
-		},
-	};
-}
-
-export function mapStateToProps(globalState) {
-	return {
-		favorites: globalState.favorites,
-	};
-}
-
-// export default Card;
-export default connect(mapStateToProps, mapDispatchToProp)(Card);
+export default Card;

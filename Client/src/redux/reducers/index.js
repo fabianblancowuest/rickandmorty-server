@@ -1,9 +1,18 @@
-import { ADDFAVORITE, DELETEFAVORITE, FILTER, ORDER } from "../actions/types";
+import {
+	ADDFAVORITE,
+	CLEAN_SCREEN,
+	DELETEFAVORITE,
+	DELETE_CHARACTER,
+	FILTER,
+	ORDER,
+	SEARCH_BY_ID,
+} from "../actions/types";
 
 const initialGlobalState = {
 	favorites: [],
 	// character: [],
-	allCharacters: [],
+	favoritesCopy: [],
+	characters: [],
 	// access: false,
 };
 
@@ -15,7 +24,7 @@ const rootReducer = (state = initialGlobalState, action) => {
 			return {
 				...state,
 				favorites: [...state.favorites, payload],
-				allCharacters: [...state.allCharacters, payload],
+				favoritesCopy: [...state.favoritesCopy, payload],
 			};
 		case DELETEFAVORITE:
 			return {
@@ -23,13 +32,13 @@ const rootReducer = (state = initialGlobalState, action) => {
 				favorites: state.favorites.filter((character) => {
 					return character.id !== Number(payload);
 				}),
-				allCharacters: state.allCharacters.filter(
+				favoritesCopy: state.favoritesCopy.filter(
 					(character) => character.id !== Number(payload),
 				),
 			};
 		case FILTER:
 			// eslint-disable-next-line no-case-declarations
-			const allCharactersFiltered = state.allCharacters.filter(
+			const allCharactersFiltered = state.favoritesCopy.filter(
 				(character) => character.gender === payload,
 			);
 			return {
@@ -49,6 +58,24 @@ const rootReducer = (state = initialGlobalState, action) => {
 			return {
 				...state,
 				favorites: sortedCharacters,
+			};
+		case SEARCH_BY_ID:
+			return {
+				...state,
+				characters: [...state.characters, payload],
+			};
+		case DELETE_CHARACTER: {
+			return {
+				...state,
+				characters: state.characters.filter((character) => {
+					return character.id !== Number(payload);
+				}),
+			};
+		}
+		case CLEAN_SCREEN:
+			return {
+				...state,
+				characters: [],
 			};
 		default:
 			return { ...state };

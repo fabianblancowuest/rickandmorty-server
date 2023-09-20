@@ -1,5 +1,17 @@
-import { ADDFAVORITE, DELETEFAVORITE, FILTER, ORDER } from "./types";
+import {
+	ADDFAVORITE,
+	DELETEFAVORITE,
+	FILTER,
+	ORDER,
+	SEARCH_BY_ID,
+	DELETE_CHARACTER,
+	CLEAN_SCREEN,
+} from "./types";
 
+import Swal from "sweetalert2";
+import axios from "axios";
+const img =
+	"https://s.yimg.com/ny/api/res/1.2/ERF8gU34MVP46JXFYeTvQQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/cinemablend_388/4cea827a41d7c66770e144612647cf50";
 // Action creators
 const addFavorite = (objCharacter) => ({
 	type: ADDFAVORITE,
@@ -25,4 +37,48 @@ const orderCards = (orden) => {
 	};
 };
 
-export { addFavorite, deleteFavorite, filterCards, orderCards };
+const searchById = (id) => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios(`http://localhost:3001/character/${id}`);
+			return dispatch({
+				type: SEARCH_BY_ID,
+				payload: data,
+			});
+		} catch (error) {
+			return Swal.fire({
+				title: "Invalid ID!",
+				text: "You must enter an ID number between 1 and 826!",
+				color: "red",
+				imageUrl: img,
+				imageWidth: 420,
+				imageHeight: 210,
+				imageAlt: "Error",
+			});
+			// return alert(error.message);
+		}
+	};
+};
+
+const deleteCharacter = (id) => {
+	return {
+		type: DELETE_CHARACTER,
+		payload: id,
+	};
+};
+
+const cleanScreen = () => {
+	return {
+		type: CLEAN_SCREEN,
+	};
+};
+
+export {
+	addFavorite,
+	deleteFavorite,
+	filterCards,
+	orderCards,
+	searchById,
+	deleteCharacter,
+	cleanScreen,
+};

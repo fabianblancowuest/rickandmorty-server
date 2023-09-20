@@ -1,29 +1,41 @@
 import SearchBar from "./SearchBar/SearchBar";
 import styles from "./Nav.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import navImg from "../../assets/img/backgrounds/navImg.png";
 // import { useState, useEffect } from "react";
 
 const Nav = (props) => {
 	return (
-		<div className={styles.div}>
+		<div className={styles.navContainer}>
 			<div className={styles.homeAbout}>
-				<Link to="/home">
+				<NavLink
+					to="/home"
+					className={({ isActive }) =>
+						isActive ? styles.activeLink : styles.navLink
+					}
+				>
 					<button className={styles.button}>Home</button>
-				</Link>
-				<Link to="/favorites">
+				</NavLink>
+				<NavLink
+					to="/favorites"
+					className={({ isActive }) =>
+						isActive ? styles.activeLink : styles.navLink
+					}
+				>
 					<button className={styles.button}>Favorites</button>
-				</Link>
-				<Link to="/about">
+				</NavLink>
+				<NavLink
+					to="/about"
+					className={({ isActive }) =>
+						isActive ? styles.activeLink : styles.navLink
+					}
+				>
 					<button className={styles.button}>About</button>
-				</Link>
+				</NavLink>
 				<img src={navImg} className={styles.navImg}></img>
 			</div>
 			<div className={styles.nav}>
-				<SearchBar
-					onSearch={props.onSearch}
-					handleCleanScreen={props.handleCleanScreen}
-				/>
+				<SearchBar />
 			</div>
 			<button className={styles.button} onClick={props.logout}>
 				Logout
