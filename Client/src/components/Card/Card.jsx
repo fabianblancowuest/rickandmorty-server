@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,18 @@ import {
 	deleteCharacter,
 } from "../../redux/actions/actions";
 
-function Card({ name, status, species, gender, origin, image, id, location }) {
+function Card(props) {
+	const {
+		name,
+		status,
+		species,
+		gender,
+		origin,
+		image,
+		id,
+		location,
+		isFavoriteView,
+	} = props;
 	const [isFav, setIsFav] = useState(false);
 
 	const dispatch = useDispatch();
@@ -47,26 +58,33 @@ function Card({ name, status, species, gender, origin, image, id, location }) {
 			}
 		});
 	}, [favorites]);
+
 	return (
 		<div className={styles.card}>
-			<button className={styles.btn} onClick={handleDelete}>
-				x
-			</button>
+			<div className={styles.buttons}>
+				{!isFavoriteView && (
+					<button className={styles.btn} onClick={handleDelete}>
+						x
+					</button>
+				)}
+
+				{isFav ? (
+					<button className={styles.btnFav} onClick={handleFavorite}>
+						🧡
+					</button>
+				) : (
+					<button className={styles.btnFav} onClick={handleFavorite}>
+						🤍
+					</button>
+				)}
+			</div>
+
 			<Link to={`/detail/${id}`}>
 				<h2 className={styles.title}>{name}</h2>
 				<img className={styles.img} src={image} alt={name} />
 				<h2>{species}</h2>
 				<h2>{gender}</h2>
 			</Link>
-			{isFav ? (
-				<button className={styles.btnFav} onClick={handleFavorite}>
-					🧡
-				</button>
-			) : (
-				<button className={styles.btnFav} onClick={handleFavorite}>
-					🤍
-				</button>
-			)}
 		</div>
 	);
 }

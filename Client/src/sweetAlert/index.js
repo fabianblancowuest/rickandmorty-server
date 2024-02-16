@@ -30,12 +30,12 @@ const swalFire2 = () => {
 
 const swalFire3 = () => {
 	return Swal.fire({
-		title: "¿Estás seguro que quieres salir?",
+		title: "Are you sure you want to log out?",
 		showDenyButton: true,
 		confirmButtonColor: "green",
-		denyButtonText: "No, cancelar.",
+		denyButtonText: "No, cancel.",
 		// showCancelButton: true,
-		confirmButtonText: "Si, salir.",
+		confirmButtonText: "Yes, log out.",
 		// denyButtonText: `Don't save`,
 	});
 };

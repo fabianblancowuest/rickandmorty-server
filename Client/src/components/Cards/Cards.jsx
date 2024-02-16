@@ -7,22 +7,24 @@ import { useEffect } from "react";
 const Cards = () => {
 	// Función para recorrer el arreglo de objeto de personajes y renderizar cada propiedad en la pantalla
 	const characters = useSelector((state) => state.characters);
-	const show = characters?.map((character) => {
-		return (
-			<div key={character.id}>
-				<Card
-					id={character.id}
-					name={character.name}
-					status={character.status}
-					species={character.species}
-					gender={character.gender}
-					origin={character.origin.name}
-					image={character.image}
-					// Agregar un identificador único como ref
-					ref={(el) => (this[`cardRef_${character.id}`] = el)}
-				/>
-			</div>
-		);
+	const show = characters?.map((character, index) => {
+		if (character.id) {
+			return (
+				<div key={index}>
+					<Card
+						id={character?.id}
+						name={character?.name}
+						status={character?.status}
+						species={character?.species}
+						gender={character?.gender}
+						origin={character.origin?.name}
+						image={character?.image}
+						// Agregar un identificador único como ref
+						ref={(el) => (this[`cardRef_${character.id}`] = el)}
+					/>
+				</div>
+			);
+		}
 	});
 
 	const lastCardRef = createRef();

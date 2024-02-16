@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { filterCards, orderCards } from "../../redux/actions/actions";
 
 const Favorites = (props) => {
-	console.log(props);
+	// console.log(props);
 	const dispatch = useDispatch();
 	function handleOrder(event) {
 		dispatch(orderCards(event.target.value));
@@ -41,8 +41,9 @@ const Favorites = (props) => {
 								status={character.status}
 								species={character.species}
 								gender={character.gender}
-								origin={character.origin.name}
+								origin={character.origin?.name}
 								image={character.image}
+								isFavoriteView={true}
 							></Card>
 						);
 					})}

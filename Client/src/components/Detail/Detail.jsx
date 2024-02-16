@@ -13,13 +13,15 @@ const Detail = () => {
 	// Hook para traer datos desde la app de rick y morty
 	useEffect(() => {
 		// axios(`https://rickandmortyapi.com/api/character/${id}`)
-		axios(`http://localhost:3001/character/${id}`).then(({ data }) => {
-			if (data.name) {
-				setCharacter(data);
-			} else {
-				window.alert("No hay personajes con ese ID");
-			}
-		});
+		axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+			({ data }) => {
+				if (data.name) {
+					setCharacter(data);
+				} else {
+					window.alert("No hay personajes con ese ID");
+				}
+			},
+		);
 		return setCharacter({});
 	}, [id]);
 

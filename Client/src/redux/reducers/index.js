@@ -1,11 +1,13 @@
 import {
 	ADDFAVORITE,
+	CLEAN_FAVORITES,
 	CLEAN_SCREEN,
 	DELETEFAVORITE,
 	DELETE_CHARACTER,
 	FILTER,
 	ORDER,
 	SEARCH_BY_ID,
+	SIGN_UP,
 } from "../actions/types";
 
 const initialGlobalState = {
@@ -14,6 +16,7 @@ const initialGlobalState = {
 	favoritesCopy: [],
 	characters: [],
 	// access: false,
+	users: [],
 };
 
 const rootReducer = (state = initialGlobalState, action) => {
@@ -77,8 +80,17 @@ const rootReducer = (state = initialGlobalState, action) => {
 				...state,
 				characters: [],
 			};
+		case CLEAN_FAVORITES:
+			return {
+				...state,
+				favorites: [],
+			};
+		case SIGN_UP:
+			return { ...state, users: [...state.users, payload] };
 		default:
-			return { ...state };
+			return {
+				...state,
+			};
 	}
 };
 

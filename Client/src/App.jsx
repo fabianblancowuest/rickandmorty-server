@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Cards from "./components/Cards/Cards";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
-import Form from "./components/Form/Form";
-import TicketTable from "./components/TicketTable/TicketTable";
+import Login from "./components/Login/Login";
 import axios from "axios";
 import "./App.css";
 import Favorites from "./components/Favorites/Favorites";
-import { swalFire1, swalFire2, swalFire3 } from "./sweetAlert";
-import Swal from "sweetalert2";
+import { swalFire3 } from "./sweetAlert";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
 	// ** Estado incial del acceso al login
@@ -22,41 +21,40 @@ function App() {
 
 	function login(userData) {
 		const { email, password } = userData;
-		const URL = "http://localhost:3001/user/login/";
+		const URL = "http://localhost:3001/rickandmorty/user/login/";
 		axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
 			const { access } = data;
-			setAccess(access);
+			// console.log(data);
+			setAccess(data);
 			access && navigate("/home");
 		});
-	}
-	// **Función para limpiar las cards de la pantalla
+	} // **Función para limpiar las cards de la pantalla
+	useEffect(() => {
+		!access && navigate("/");
+	}, [access]);
 
 	// ** Función para desloguearse
 	function handleLogout() {
 		swalFire3().then((result) => {
-			/* Read more about isConfirmed, isDenied below */
 			if (result.isConfirmed) {
-				// Swal.fire("Saved!", "", "success");
 				setAccess(false);
-				// setCharacters([]);
 				navigate("/");
 			}
-			// else if (result.isDenied) {
-			// 	Swal.fire("Changes are not saved", "", "info");
-			// }
 		});
 	}
 
 	return (
 		<div className="App">
-			{useLocation().pathname !== "/" ? <Nav logout={handleLogout} /> : null}
+			{/* {useLocation().pathname !== "/" ? ( */}
+			<Nav logout={handleLogout} />
+			{/* ) : null} */}
 			<Routes>
-				<Route path="/tickets" element={<TicketTable></TicketTable>}></Route>
-				{/* <Route path="/tickets" element={}></Route> */}
 				<Route
+					exact
 					path="/"
-					element={<Form login={login} datos={datos}></Form>}
+					element={<Login login={login} datos={datos}></Login>}
 				></Route>
+				<Route path="/signup" element={<SignUp></SignUp>}></Route>
 				<Route path="/home" element={<Cards />}></Route>
 				<Route path="/about" element={<About></About>}></Route>
 				<Route path="/detail/:id" element={<Detail></Detail>}></Route>

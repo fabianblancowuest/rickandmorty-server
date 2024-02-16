@@ -6,6 +6,8 @@ import {
 	SEARCH_BY_ID,
 	DELETE_CHARACTER,
 	CLEAN_SCREEN,
+	SIGN_UP,
+	CLEAN_FAVORITES,
 } from "./types";
 
 import Swal from "sweetalert2";
@@ -40,14 +42,16 @@ const orderCards = (orden) => {
 const searchById = (id) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios(`http://localhost:3001/character/${id}`);
+			const { data } = await axios(
+				`http://localhost:3001/rickandmorty/character/${id}`,
+			);
 			return dispatch({
 				type: SEARCH_BY_ID,
 				payload: data,
 			});
 		} catch (error) {
 			return Swal.fire({
-				title: "Invalid ID!",
+				title: id,
 				text: "You must enter an ID number between 1 and 826!",
 				color: "red",
 				imageUrl: img,
@@ -73,6 +77,23 @@ const cleanScreen = () => {
 	};
 };
 
+const cleanFavorites = () => {
+	return {
+		type: CLEAN_FAVORITES,
+	};
+};
+
+const signUp = (userData) => {
+	return async (dispatch) => {
+		const URL = "http://localhost:3001/rickandmorty/user/signup/";
+		const { data } = await axios.post(URL, userData);
+		dispatch({
+			type: SIGN_UP,
+			payload: data,
+		});
+	};
+};
+
 export {
 	addFavorite,
 	deleteFavorite,
@@ -81,4 +102,6 @@ export {
 	searchById,
 	deleteCharacter,
 	cleanScreen,
+	cleanFavorites,
+	signUp,
 };

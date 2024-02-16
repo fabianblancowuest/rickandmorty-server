@@ -2,17 +2,18 @@
 	font-size: 0.7rem;
 	letter-spacing: 0.06rem;
 	font-style: italic;
-	width: 14rem;
+	width: 12rem;
 	height: 25rem;
 	margin: 2em;
 	border-radius: 1rem;
 	box-shadow: 2px 2px 10px #301950;
 	background-color: rgba(0, 0, 0, 0.7);
 	transition: transform 0.5s ease;
-	animation: aparecer 3s ease-in-out;
+	animation: aparecer 2s ease-in-out;
 }
 
 .card:hover {
+	box-shadow: 1px 2px 10rem white;
 	transform: scale(1.1);
 	cursor: pointer;
 	/* transform: rotate(-10deg); */
@@ -26,14 +27,14 @@
 }
 
 .title {
-	font-size: 1.27rem;
+	font-size: 1.2rem;
 }
 
 .img {
-	border-radius: 50%;
+	border-radius: 25%;
 	/* box-shadow: 1px 1px 20px #0b2b8d; */
 	box-shadow: 0.1rem 0.1rem 3rem whitesmoke;
-	width: 85%;
+	width: 80%;
 }
 
 a:link,
@@ -57,12 +58,19 @@ a:visited {
 	cursor: pointer;
 }
 
+.buttons {
+	margin: 0 0.8rem;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+}
+
 .btnFav {
 	background-color: transparent;
 	border-radius: 50%;
 	border: none;
 	/* scale: 1.2; */
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	/* text-indent: 9rem; */
 	opacity: 0.5;
 }
