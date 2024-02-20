@@ -1,15 +1,24 @@
 require("dotenv").config();
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY_RENDER } =
 	process.env;
 const { Sequelize } = require("sequelize");
 const FavoriteModel = require("./models/Favorite");
 const UserModel = require("./models/User");
 
-const sequelize = new Sequelize(
-	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-	{ logging: false, native: false },
-);
-// const sequelize = new Sequelize(DB_DEPLOY, { logging: false, native: false });
+// const sequelize = new Sequelize(
+// 	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+// 	{ logging: false, native: false },
+// );
+
+const sequelize = new Sequelize(DB_DEPLOY_RENDER, {
+	logging: false,
+	native: false,
+	dialectOptions: {
+		ssl: {
+			require: true,
+		},
+	},
+});
 
 UserModel(sequelize);
 FavoriteModel(sequelize);
