@@ -35,7 +35,7 @@ server.get("/health-check", (req, res) => {
 server.use("/rickandmorty", mainRouter);
 // server.use("/rickandmorty", router);
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
 	conn.sync({ force: false });
 	console.log(message);
 });
